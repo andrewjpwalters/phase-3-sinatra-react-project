@@ -18,7 +18,7 @@ ActiveRecord::Schema.define(version: 2022_09_09_042720) do
 
   create_table "movies", force: :cascade do |t|
     t.string "name"
-    t.string "genre"
+    t.integer "genre_id"
     t.integer "year"
     t.string "comment"
   end
