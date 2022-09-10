@@ -18,13 +18,13 @@ class ApplicationController < Sinatra::Base
   end
 
   post "/movies/:id" do
-    movie = Movie.create(body: params[:body])
+    movie = Movie.post_new_genre
     movie.to_json
   end
 
   patch "/movies/:id" do
     movie = Movie.find(params[:id])
-    movie.update(body: params[:body])
+    movie.update(comment: params[:comment])
     movie.to_json
   end
 
