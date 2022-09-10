@@ -13,7 +13,7 @@ Genre.create(name: "Western")
 Genre.create(name: "Fantasy")
 Genre.create(name: "Mystery")
 
-rand(1..10).times do
+30.times do
     Movie.create(
         name: Faker::Movie.title,
         genre_id: rand(1..10),
