@@ -4,7 +4,7 @@ class ApplicationController < Sinatra::Base
   # Add your routes here
   get "/movies" do
     movies = Movies.all.order(:name)
-    movies.to_json
+    movies.to_json(inclue: :genres)
   end
 
   get "/genres" do
