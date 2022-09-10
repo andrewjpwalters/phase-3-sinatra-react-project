@@ -17,14 +17,20 @@ class ApplicationController < Sinatra::Base
     genre.to_json(include: :movies)
   end
 
-  post "/movies/:id" do
-    movie = Movie.post_new_genre
+  post "/movie" do
+    movie = Movie.post_with_new_genre
     movie.to_json
   end
 
   patch "/movies/:id" do
     movie = Movie.find(params[:id])
     movie.update(comment: params[:comment])
+    movie.to_json
+  end
+
+  delete "/movie/:id" do
+    movie = Movie.find(params[:id])
+    movie.destroy
     movie.to_json
   end
 
