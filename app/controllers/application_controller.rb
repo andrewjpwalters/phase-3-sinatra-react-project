@@ -12,4 +12,15 @@ class ApplicationController < Sinatra::Base
     genres.to_json
   end
 
+  post "/movies/:id" do
+    movie = Movie.create(body: params[:body])
+    movie.to_json
+  end
+
+  patch "/movies/:id" do
+    movie = Movie.find(params[:id])
+    movie.update(body: params[:body])
+    movie.to_json
+  end
+
 end
