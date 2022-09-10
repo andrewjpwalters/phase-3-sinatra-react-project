@@ -1,14 +1,13 @@
 class ApplicationController < Sinatra::Base
   set :default_content_type, 'application/json'
   
-  # Add your routes here
   get "/movies" do
-    movies = Movies.all.order(:name)
-    movies.to_json(inclue: :genres)
+    movies = Movie.all.order(:name)
+    movies.to_json
   end
 
   get "/genres" do
-    genres = Genres.all.order(:name)
+    genres = Genre.all.order(:name)
     genres.to_json
   end
 
@@ -17,8 +16,13 @@ class ApplicationController < Sinatra::Base
     genre.to_json(include: :movies)
   end
 
-  post "/movie" do
-    movie = Movie.post_with_new_genre
+  get "/movies/:id" do
+    genre = Movie.find(params[:id])
+    genre.to_json
+  end
+
+  post "/movies" do
+    movie = Movie.create(name: params[:name], genre: params[:genre_id], year: params[:year], comment: params[:comment])
     movie.to_json
   end
 
@@ -28,7 +32,7 @@ class ApplicationController < Sinatra::Base
     movie.to_json
   end
 
-  delete "/movie/:id" do
+  delete "/movies/:id" do
     movie = Movie.find(params[:id])
     movie.destroy
     movie.to_json
