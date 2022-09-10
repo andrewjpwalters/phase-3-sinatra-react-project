@@ -3,12 +3,12 @@ class ApplicationController < Sinatra::Base
   
   # Add your routes here
   get "/movies" do
-    movies = Movies.all
+    movies = Movies.all.order(:name)
     movies.to_json
   end
 
   get "/genres" do
-    genres = Genres.all
+    genres = Genres.all.order(:name)
     genres.to_json
   end
 
