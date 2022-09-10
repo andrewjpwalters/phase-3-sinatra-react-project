@@ -3,12 +3,12 @@ class ApplicationController < Sinatra::Base
   
   get "/movies" do
     movies = Movie.all.order(:name)
-    movies.to_json
+    movies.to_json(include: :genre)
   end
 
   get "/genres" do
     genres = Genre.all.order(:name)
-    genres.to_json
+    genres.to_json(include: :movies)
   end
 
   get "/genres/:id" do
@@ -18,11 +18,11 @@ class ApplicationController < Sinatra::Base
 
   get "/movies/:id" do
     genre = Movie.find(params[:id])
-    genre.to_json
+    genre.to_json(include: :genre)
   end
 
   post "/movies" do
-    movie = Movie.create(name: params[:name], genre: params[:genre_id], year: params[:year], comment: params[:comment])
+    movie = Movie.create(name: params[:name], genre_id: params[:genre_id], year: params[:year], comment: params[:comment])
     movie.to_json
   end
 
