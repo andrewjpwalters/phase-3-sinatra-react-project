@@ -12,6 +12,11 @@ class ApplicationController < Sinatra::Base
     genres.to_json
   end
 
+  get "/genres/:id" do
+    genre = Genre.find(params[:id])
+    genre.to_json(include: :movies)
+  end
+
   post "/movies/:id" do
     movie = Movie.create(body: params[:body])
     movie.to_json
