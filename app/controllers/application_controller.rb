@@ -23,24 +23,24 @@ class ApplicationController < Sinatra::Base
 
   post "/movies" do
     movie = Movie.create(name: params[:name], genre_id: params[:genre_id], year: params[:year], comment: params[:comment])
-    movie.to_json
+    movie.to_json(include: :genre)
   end
 
   post "/genres" do
     genre = Genre.create(name: params[:name])
-    genre.to_json
+    genre.to_json(include: :movies)
   end
 
   patch "/movies/:id" do
     movie = Movie.find(params[:id])
     movie.update(comment: params[:comment])
-    movie.to_json
+    movie.to_json(include: :genre)
   end
 
   delete "/movies/:id" do
     movie = Movie.find(params[:id])
     movie.destroy
-    movie.to_json
+    movie.to_json(inlude: :genre)
   end
 
 end
