@@ -47,3 +47,5 @@ Pull requests are welcome. For major changes, please open an issue first to disc
 React Bootstrap (https://react-bootstrap.github.io/)
 
 React Router Bootstrap (https://github.com/react-bootstrap/react-router-bootstrap)
+
+This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
