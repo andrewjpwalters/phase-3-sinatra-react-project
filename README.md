@@ -10,6 +10,12 @@ Run bundle install to install dependencies on API:
 bundle install
 ```
 
+Run migrations
+
+```bash
+bundle exec rake db:migrate
+```
+
 Run npm install to install dependencies on React frontend: 
 
 ```bash
